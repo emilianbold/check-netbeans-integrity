@@ -23,7 +23,7 @@ jobs:
           curl -o KEYS https://downloads.apache.org/netbeans/KEYS
           curl -o Apache-NetBeans-12.4-bin-linux-x64.sh.asc https://downloads.apache.org/netbeans/netbeans/12.4/Apache-NetBeans-12.4-bin-linux-x64.sh.asc
           curl -o Apache-NetBeans-12.4-bin-linux-x64.sh.sha512 https://downloads.apache.org/netbeans/netbeans/12.4/Apache-NetBeans-12.4-bin-linux-x64.sh.sha512
-          curl -L -o Apache-NetBeans-12.4-bin-linux-x64.sh https://www.apache.org/dyn/closer.cgi/netbeans/netbeans/12.4/Apache-NetBeans-12.4-bin-linux-x64.sh
+          curl -L -o Apache-NetBeans-12.4-bin-linux-x64.sh https://www.apache.org/dyn/closer.lua/netbeans/netbeans/12.4/Apache-NetBeans-12.4-bin-linux-x64.sh?action=download
           shasum -c Apache-NetBeans-12.4-bin-linux-x64.sh.sha512
           gpg --import KEYS
           gpg --verify Apache-NetBeans-12.4-bin-linux-x64.sh.asc Apache-NetBeans-12.4-bin-linux-x64.sh
