@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        run: |
+          curl -o KEYS https://downloads.apache.org/netbeans/KEYS
+          gpg --import KEYS
+          curl -o Apache-NetBeans-12.4-bin-linux-x64.sh.asc https://downloads.apache.org/netbeans/netbeans/12.4/Apache-NetBeans-12.4-bin-linux-x64.sh.asc
+          curl -o Apache-NetBeans-12.4-bin-linux-x64.sh.sha512 https://downloads.apache.org/netbeans/netbeans/12.4/Apache-NetBeans-12.4-bin-linux-x64.sh.sha512
+          curl -L -o Apache-NetBeans-12.4-bin-linux-x64.sh https://www.apache.org/dyn/closer.cgi/netbeans/netbeans/12.4/Apache-NetBeans-12.4-bin-linux-x64.sh
+          gpg --verify Apache-NetBeans-12.4-bin-linux-x64.sh.asc Apache-NetBeans-12.4-bin-linux-x64.sh
+          shasum -c Apache-NetBeans-12.4-bin-linux-x64.sh.sha512.txt
