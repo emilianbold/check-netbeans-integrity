@@ -1,2 +1,3 @@
-# check-netbeans-integrity
-Check that NetBeans downloads are safe
+# Check NetBeans downloads integrity
+
+The GitHub action here downloads and check the GPG and SHA signature for the NetBeans build.
